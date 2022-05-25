@@ -1,6 +1,6 @@
 from django.core.paginator import Paginator
 from django.shortcuts import render
-from .models import Post
+from .models import Post, Categorya
 # Create your views here.
 
 def home(req):
@@ -26,12 +26,22 @@ def blog(req):
                   )
 
 def blog_detail(req, id):
+
+    # filter by id
     posts = Post.objects.get(id=id)
-    post_2 = Post.objects.all().order_by('-view_count')
+
+    # order by
+    post_2 = Post.objects.all().order_by('-date')
+
+    # view count
     posts.view_count+=1
     posts.save()
+
+    cat = Categorya.objects.all()
+
     return render(req, 'blog_detail.html',
                   context={
                       'posts':posts,
-                      'post_2':post_2
+                      'post_2':post_2,
+                      'cat':cat
                   })
