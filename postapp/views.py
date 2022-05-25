@@ -27,9 +27,11 @@ def blog(req):
 
 def blog_detail(req, id):
     posts = Post.objects.get(id=id)
+    post_2 = Post.objects.all().order_by('-view_count')
     posts.view_count+=1
     posts.save()
     return render(req, 'blog_detail.html',
                   context={
-                      'posts':posts
+                      'posts':posts,
+                      'post_2':post_2
                   })

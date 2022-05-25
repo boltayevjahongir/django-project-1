@@ -88,66 +88,30 @@
                             </li>
                         </ul>
                     </div>
+
+
+
+
+
                     <div class="mb-5">
                         <img src="img/blog-1.jpg" alt="" class="img-fluid rounded">
                     </div>
                     <div class="mb-5">
                         <h3 class="mb-4 section-title">Recent Post</h3>
+
+                        {% for item_2 in post_2 %}
                         <div class="d-flex align-items-center border-bottom mb-3 pb-3">
-                            <img class="img-fluid rounded" src="img/blog-1.jpg" style="width: 80px; height: 80px; object-fit: cover;" alt="">
+                            <img class="img-fluid rounded" src="{{ item_2.get_image }}" style="width: 80px; height: 80px; object-fit: cover;" alt="">
                             <div class="d-flex flex-column pl-3">
-                                <a class="text-dark mb-2" href="">Elitr diam amet sit elitr magna ipsum ipsum dolor</a>
+                                <a class="text-dark mb-2" href="{% url 'blog_detail' item_2.id %}">{{ item_2.theme }}</a>
                                 <div class="d-flex">
-                                    <small><a class="text-secondary text-uppercase font-weight-medium" href="">Admin</a></small>
+                                    <small>Views {{ item_2.view_count }}</small>
                                     <small class="text-primary px-2">|</small>
-                                    <small><a class="text-secondary text-uppercase font-weight-medium" href="">Cleaning</a></small>
+                                    <small> {{ item_2.date }}</small>
                                 </div>
                             </div>
                         </div>
-                        <div class="d-flex align-items-center border-bottom mb-3 pb-3">
-                            <img class="img-fluid rounded" src="img/blog-2.jpg" style="width: 80px; height: 80px; object-fit: cover;" alt="">
-                            <div class="d-flex flex-column pl-3">
-                                <a class="text-dark mb-2" href="">Elitr diam amet sit elitr magna ipsum ipsum dolor</a>
-                                <div class="d-flex">
-                                    <small><a class="text-secondary text-uppercase font-weight-medium" href="">Admin</a></small>
-                                    <small class="text-primary px-2">|</small>
-                                    <small><a class="text-secondary text-uppercase font-weight-medium" href="">Cleaning</a></small>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="d-flex align-items-center border-bottom mb-3 pb-3">
-                            <img class="img-fluid rounded" src="img/blog-3.jpg" style="width: 80px; height: 80px; object-fit: cover;" alt="">
-                            <div class="d-flex flex-column pl-3">
-                                <a class="text-dark mb-2" href="">Elitr diam amet sit elitr magna ipsum ipsum dolor</a>
-                                <div class="d-flex">
-                                    <small><a class="text-secondary text-uppercase font-weight-medium" href="">Admin</a></small>
-                                    <small class="text-primary px-2">|</small>
-                                    <small><a class="text-secondary text-uppercase font-weight-medium" href="">Cleaning</a></small>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="d-flex align-items-center border-bottom mb-3 pb-3">
-                            <img class="img-fluid rounded" src="img/blog-1.jpg" style="width: 80px; height: 80px; object-fit: cover;" alt="">
-                            <div class="d-flex flex-column pl-3">
-                                <a class="text-dark mb-2" href="">Elitr diam amet sit elitr magna ipsum ipsum dolor</a>
-                                <div class="d-flex">
-                                    <small><a class="text-secondary text-uppercase font-weight-medium" href="">Admin</a></small>
-                                    <small class="text-primary px-2">|</small>
-                                    <small><a class="text-secondary text-uppercase font-weight-medium" href="">Cleaning</a></small>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="d-flex align-items-center">
-                            <img class="img-fluid rounded" src="img/blog-2.jpg" style="width: 80px; height: 80px; object-fit: cover;" alt="">
-                            <div class="d-flex flex-column pl-3">
-                                <a class="text-dark mb-2" href="">Elitr diam amet sit elitr magna ipsum ipsum dolor</a>
-                                <div class="d-flex">
-                                    <small><a class="text-secondary text-uppercase font-weight-medium" href="">Admin</a></small>
-                                    <small class="text-primary px-2">|</small>
-                                    <small><a class="text-secondary text-uppercase font-weight-medium" href="">Cleaning</a></small>
-                                </div>
-                            </div>
-                        </div>
+                        {% endfor %}
                     </div>
                     <div class="mb-5">
                         <img src="img/blog-2.jpg" alt="" class="img-fluid rounded">
