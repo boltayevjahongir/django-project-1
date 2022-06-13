@@ -28,3 +28,11 @@ class Post(models.Model):
 
     def __str__(self):
         return self.theme
+
+class Contact(models.Model):
+    name = models.CharField(max_length=255)
+    email = models.CharField(max_length=255, null=True, blank=True)
+    subject = models.CharField(max_length=255, null=True, blank=True)
+    message = models.TextField( null=True, blank=True)
+    date = models.DateTimeField(auto_now_add=True)
+

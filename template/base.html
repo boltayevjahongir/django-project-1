@@ -25,6 +25,11 @@
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="{% static 'css/style.css'%}" rel="stylesheet">
+    <style>
+        .alert-error{
+            background-color: red !important;
+        }
+    </style>
 </head>
 
 <body>
@@ -88,7 +93,7 @@
 {#                                    <a href="{% url 'blog_detail' %}" class="dropdown-item">Blog Detail</a>#}
                                 </div>
                             </div>
-                            <a href="contact.html" class="nav-item nav-link">Contact</a>
+                            <a href="{% url 'contact' %}" class="nav-item nav-link">Contact</a>
                         </div>
                         <a href="" class="btn btn-primary mr-3 d-none d-lg-block">Get A Quote</a>
                     </div>

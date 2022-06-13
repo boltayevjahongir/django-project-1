@@ -1,6 +1,8 @@
+from django.contrib import messages
 from django.core.paginator import Paginator
 from django.shortcuts import render
-from .models import Post, Categorya
+from .models import Post, Categorya, Contact
+from django.core.mail import send_mail
 # Create your views here.
 
 def home(req):
@@ -11,6 +13,24 @@ def home(req):
 def about(req):
     return render(req, 'about.html')
 
+def contact(request):
+    con  = Contact()
+    if request.method == "POST":
+        try:
+            name = request.POST.get('name')
+            email = request.POST.get('email')
+            subject = request.POST.get('subject')
+            message = request.POST.get('message')
+            con.name = name
+            con.email = email
+            con.subject = subject
+            con.message = message
+            con.save()
+            messages.warning(request, 'saqlanmadiiiiiii')
+        except:
+            messages.success(request, 'matnnnnnnnnnnnnnnnnnn')
+
+    return render(request, 'contact.html')
 
 # blog page
 def blog(req):
@@ -45,3 +65,12 @@ def blog_detail(req, id):
                       'post_2':post_2,
                       'cat':cat
                   })
+
+def category(request, id):
+    posts = Post.objects.filter(cat_id=id)
+    return render(request, 'category.html',
+                  context={
+                      'posts': posts
+                  }
+                  )
+
