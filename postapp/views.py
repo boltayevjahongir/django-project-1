@@ -1,7 +1,7 @@
 from django.contrib import messages
 from django.core.paginator import Paginator
 from django.shortcuts import render
-from .models import Post, Categorya, Contact
+from .models import Post, Categorya, Contact, Project, ProjectImage
 from django.core.mail import send_mail
 # Create your views here.
 
@@ -73,4 +73,13 @@ def category(request, id):
                       'posts': posts
                   }
                   )
+
+def project(request):
+
+    pro = Project.objects.all()
+    proImg = ProjectImage.objects.all()
+    return render(request, "project.html", context={
+        'projects':pro,
+        'projectImages': proImg
+    })
 
